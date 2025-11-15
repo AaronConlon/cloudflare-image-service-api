@@ -1,8 +1,5 @@
-import {
-  BasicImageSchema,
-  CommonFileSchema,
-  ImageSchema,
-} from "@shared/schemas";
+import { ImageSchema } from "@models/image.model";
+import { CommonModelSchema } from "@shared/schemas/common";
 import { AppType } from "src/app";
 
 const registerUploadRoute = (app: AppType) => {
@@ -14,7 +11,7 @@ const registerUploadRoute = (app: AppType) => {
         body: {
           content: {
             "multipart/form-data": {
-              schema: BasicImageSchema.extend(CommonFileSchema.shape),
+              schema: ImageSchema.extend(CommonModelSchema.shape),
             },
           },
         },
@@ -25,7 +22,7 @@ const registerUploadRoute = (app: AppType) => {
           content: {
             "application/json": {
               // just pick id
-              schema: ImageSchema.pick({ id: true }),
+              schema: CommonModelSchema.pick({ id: true }),
             },
           },
         },

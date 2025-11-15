@@ -1,10 +1,11 @@
 import { OpenAPIHono } from "@hono/zod-openapi";
-import { registerImageRoutes } from "./routes";
+import { registerImageRoutes, registerUserRoutes } from "./routes";
 
 const app = new OpenAPIHono<{ Bindings: Env }>();
 
 // register routes
 registerImageRoutes(app);
+registerUserRoutes(app);
 
 app.doc("/openapi.json", {
   openapi: "3.0.0",

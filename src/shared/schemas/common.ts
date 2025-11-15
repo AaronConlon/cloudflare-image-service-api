@@ -19,6 +19,13 @@ export const CommonModelSchema = z.object({
   }),
 });
 
+export const OmitCommonFields = {
+  created_at: true,
+  updated_at: true,
+  deleted_at: true,
+  id: true,
+} as const;
+
 export const CommonFileSchema = z.object({
   file: z.any().openapi({
     type: "string",
@@ -27,3 +34,4 @@ export const CommonFileSchema = z.object({
     description: "待上传的二进制文件",
   }),
 });
+
