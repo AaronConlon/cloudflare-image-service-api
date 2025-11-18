@@ -81,3 +81,15 @@ export function isD1Error(e: unknown) {
   // 检测是否有 D1 错误字符串
   return /D1_(ERROR|EXEC_ERROR|TYPE_ERROR|COLUMN_NOTFOUND)/.test(msg);
 }
+
+// 检查是否是 Unauthorized
+export function isUnauthorizedError(e: unknown) {
+  const msg =
+    typeof e === "object" && e !== null
+      ? (e as any).message
+      : undefined;
+
+  if (typeof msg !== "string") return false;
+
+  return msg.includes("Unauthorized");
+}

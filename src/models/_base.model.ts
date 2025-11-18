@@ -1,5 +1,5 @@
+import { zodField } from "@/shared/utils/z-field.decorator";
 import { z } from "@hono/zod-openapi";
-import { zodField } from "@utils/z-field.decorator";
 import { compose, HasUniqueIds, Model, SoftDeletes } from "sutando";
 
 export class BaseModel extends compose(Model, HasUniqueIds, SoftDeletes) {

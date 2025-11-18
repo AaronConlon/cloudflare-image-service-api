@@ -1,3 +1,4 @@
+import { AppType } from "@/app";
 import { RoleModel, RoleSchema } from "@models/role.model";
 import {
   CommonIdSchema,
@@ -9,7 +10,6 @@ import {
   fmtResSuccess,
   formatResponseSchema,
 } from "@shared/utils/response-utils";
-import { AppType } from "src/app";
 
 // GET 🟢 /roles
 const v1_route__GET_roles = (app: AppType) => {

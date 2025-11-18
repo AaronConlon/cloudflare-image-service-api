@@ -1,5 +1,8 @@
+import {
+  genModelToZodSchema,
+  zodField,
+} from "@/shared/utils/z-field.decorator";
 import { z } from "@hono/zod-openapi";
-import { genModelToZodSchema, zodField } from "@utils/z-field.decorator";
 import { ulid } from "ulid";
 import { BaseModel } from "./_base.model";
 import { ImageCollectionModel } from "./image-collection.model";
@@ -7,6 +10,8 @@ import { ImageModel } from "./image.model";
 
 export class UserModel extends BaseModel {
   table = "users";
+
+  hidden = ["deleted_at"];
 
   newUniqueId() {
     return ulid();

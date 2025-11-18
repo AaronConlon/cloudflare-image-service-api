@@ -1,11 +1,15 @@
+import {
+  genModelToZodSchema,
+  zodField,
+} from "@/shared/utils/z-field.decorator";
 import { z } from "@hono/zod-openapi";
-import { genModelToZodSchema, zodField } from "@utils/z-field.decorator";
 import { ulid } from "ulid";
 import { BaseModel } from "./_base.model";
 import { RoleModel } from "./role.model";
 
 export class PermissionModel extends BaseModel {
   table = "permissions";
+  hidden = ["deleted_at"];
 
   newUniqueId() {
     return ulid();

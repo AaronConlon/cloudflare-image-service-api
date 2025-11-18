@@ -110,3 +110,4 @@ export const CommonSuccessSchema = z.object({
   },
   description: "The success of the operation",
 })
+

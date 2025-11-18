@@ -1,6 +1,6 @@
+import { AppType } from "@/app";
 import { ImageSchema } from "@models/image.model";
 import { CommonModelSchema } from "@shared/schemas/common";
-import { AppType } from "src/app";
 
 const registerUploadRoute = (app: AppType) => {
   app.openapi(

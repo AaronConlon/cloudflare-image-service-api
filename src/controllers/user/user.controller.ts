@@ -1,3 +1,4 @@
+import { AppType } from "@/app";
 import { UserModel, UserSchema } from "@models/user.model";
 import {
   CommonIdSchema,
@@ -10,7 +11,6 @@ import {
   fmtResSuccess,
   formatResponseSchema,
 } from "@shared/utils/response-utils";
-import { AppType } from "src/app";
 
 // GET 🟢 /users
 export const v1_route__GET_users = (app: AppType) => {

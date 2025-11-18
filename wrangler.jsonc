@@ -30,11 +30,13 @@
 	},
 	"vars": {
 		"NODE_ENV": "development",
+		"JWT_SECRET": "your-secret-key-development",
 	},
 	"env": {
 		"production": {
 			"vars": {
 				"NODE_ENV": "production",
+				"JWT_SECRET": "your-secret-key-production",
 			}
 		}
 	}
