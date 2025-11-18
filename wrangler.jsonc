@@ -25,16 +25,19 @@
 			"database_id": "e53255a9-c546-46f1-b46d-285d0d32d34a"
 		}
 	],
-	"env": {
-		"dev": {
-			"vars": {
-				"NODE_ENV": "development",
-			}
-		}
-	},
 	"dev": {
 		"port": 9797
 	},
+	"vars": {
+		"NODE_ENV": "development",
+	},
+	"env": {
+		"production": {
+			"vars": {
+				"NODE_ENV": "production",
+			}
+		}
+	}
 	/**
 	 * Smart Placement
 	 * Docs: https://developers.cloudflare.com/workers/configuration/smart-placement/#smart-placement

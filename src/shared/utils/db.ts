@@ -64,3 +64,20 @@ export const fmtDbQueryData = (queryData: {
   );
   console.log("");
 };
+
+
+// 检查是否是 d1 error
+export function isD1Error(e: unknown) {
+  const msg =
+    typeof e === "object" && e !== null
+      ? // 新版（wrangler ≥ 3.1.1）：错误直接在 e.message
+        (e as any).message ??
+        // 旧版：详细信息在 cause.message
+        (e as any).cause?.message
+      : undefined;
+
+  if (typeof msg !== "string") return false;
+
+  // 检测是否有 D1 错误字符串
+  return /D1_(ERROR|EXEC_ERROR|TYPE_ERROR|COLUMN_NOTFOUND)/.test(msg);
+}

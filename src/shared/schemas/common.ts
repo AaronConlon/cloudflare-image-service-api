@@ -35,3 +35,78 @@ export const CommonFileSchema = z.object({
   }),
 });
 
+// 通用分页请求和响应 schema
+export const CommonPaginationRequestSchema = z.object({
+  page: z.coerce.number().default(1).openapi({
+    example: 1,
+    description: "The page number",
+  }),
+  page_size: z.coerce.number().default(10).openapi({
+    example: 10,
+    description: "The page size",
+  }),
+});
+
+export const CommonPaginationResponseSchema = z.object({
+  total: z.number().openapi({
+    example: 100,
+    description: "The total number of items",
+  }),
+  page: z.number().openapi({
+    example: 1,
+    description: "The page number",
+  }),
+  page_size: z.number().openapi({
+    example: 10,
+    description: "The page size",
+  }),
+});
+
+export const genPaginationResponseSchema = (dataSchema: z.ZodSchema) => {
+  return z.object({
+    code: z.number().default(0),
+    message: z.string().optional().default(''),
+    data:  z.object({
+      data: z.array(dataSchema),
+      // pagination: CommonPaginationResponseSchema,
+      current_page: z.number().openapi({
+        example: 1,
+        description: "The current page number",
+      }),
+      total: z.number().openapi({
+        example: 10,
+        description: "The total number of items",
+      }),
+      per_page: z.number().openapi({
+        example: 10,
+        description: "The number of items per page",
+      }),
+      last_page: z.number().openapi({
+        example: 10,
+        description: "The last page number",
+      }),
+      count: z.number().openapi({
+        example: 10,
+        description: "The total number of items",
+      }),
+    })
+  })
+};
+
+// common id schema
+export const CommonIdSchema = z.object({
+  id: z.string().openapi({
+    example: "1234567890abcdef",
+    description: "The ID of the model",
+  })
+})
+
+// common status schema
+export const CommonSuccessSchema = z.object({
+  success: z.boolean()
+}).openapi({
+  example: {
+    success: true,
+  },
+  description: "The success of the operation",
+})
