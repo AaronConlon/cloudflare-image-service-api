@@ -5,6 +5,8 @@ import {
 import { z } from "@hono/zod-openapi";
 import { ulid } from "ulid";
 import { BaseModel } from "./_base.model";
+import { ArticleCommentModel } from "./article-comment.model";
+import { ArticleModel } from "./article.model";
 import { ImageCollectionModel } from "./image-collection.model";
 import { ImageModel } from "./image.model";
 
@@ -52,6 +54,17 @@ export class UserModel extends BaseModel {
 
   relationImages() {
     return this.hasMany(ImageModel, "user_id", "id");
+  }
+
+  // 一对多：一个用户有多篇文章
+  relationArticles() {
+    return this.hasMany(ArticleModel, "author_id", "id");
+  }
+
+  // 一对多：一个用户有多条评论
+  relationArticleComments() {
+    // hasMany = 外键在对方
+    return this.hasMany(ArticleCommentModel, "author_id", "id");
   }
 }
 
